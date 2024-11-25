@@ -32,6 +32,17 @@ public class User implements UserDetails {
     @Enumerated(value = EnumType.STRING)
     Role role;
 
+    @OneToMany(mappedBy = "user")
+    private List<Token> tokens;
+
+    public List<Token> getTokens() {
+        return tokens;
+    }
+
+    public void setTokens(List<Token> tokens) {
+        this.tokens = tokens;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
